@@ -25,3 +25,7 @@
 ## install Mongoose
 
 `npm i mongoose`
+
+## install bcrypt
+
+`npm i bcryptjs`
