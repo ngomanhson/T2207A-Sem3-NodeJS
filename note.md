@@ -29,3 +29,7 @@
 ## install bcrypt
 
 `npm i bcryptjs`
+
+## install multer
+
+`npm i multer`
