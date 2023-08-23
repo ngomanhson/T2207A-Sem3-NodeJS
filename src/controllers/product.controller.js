@@ -4,7 +4,7 @@ const fs = require("fs"); //Filesystem
 
 exports.list = async (req, res) => {
     try {
-        const rs = await Product.find().populate("category", "brand").exec();
+        const rs = await Product.find().populate("category").exec();
         res.render("product/list", { products: rs });
     } catch (error) {
         res.send(error);
@@ -43,7 +43,7 @@ exports.store = async (req, res) => {
 exports.formEdit = async (req, res) => {
     const _id = req.params.id;
     try {
-        const product = await Product.findById(_id).populate("category", "brand").exec();
+        const product = await Product.findById(_id).populate("category").exec();
         // product.url = req._parsedOriginalUrl.path;
         product.image = "";
 
