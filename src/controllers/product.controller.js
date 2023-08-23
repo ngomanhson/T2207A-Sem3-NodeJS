@@ -1,12 +1,11 @@
 const Product = require("./../models/product.model");
+const Category = require("./../models/category.model");
 const fs = require("fs"); //Filesystem
 
 exports.list = async (req, res) => {
     try {
-        const product = await Product.find();
-        res.render("product/list", {
-            product: product,
-        });
+        const rs = await Product.find().populate("category", "brand").exec();
+        res.render("product/list", { products: rs });
     } catch (error) {
         res.send(error);
     }
@@ -44,8 +43,11 @@ exports.store = async (req, res) => {
 exports.formEdit = async (req, res) => {
     const _id = req.params.id;
     try {
-        const product = await Product.findById(_id);
-        product.url = req._parsedOriginalUrl.path;
+        const product = await Product.findById(_id).populate("category", "brand").exec();
+        // product.url = req._parsedOriginalUrl.path;
+        product.image = "";
+
+        res.send(product);
         res.render("product/form", { product: product });
     } catch (error) {
         res.redirect("/product");
