@@ -72,17 +72,19 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Category</th>
+                                <th scope="col">Brand</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% products.forEach(p => { %>
+                            <% product.forEach(p => { %>
                             <tr>
                                 <td><img src="data:<%= p.image.contentType %>;base64,<%= p.image.data %>" width="80" /></td>
                                 <th><%= p.name %></th>
                                 <td><%= p.price %></td>
-                                <td><%= p.category %></td>
+                                <td><%= p.category.name %></td>
+                                <td><%= p.brand.name %></td>
                                 <td><%= p.description %></td>
                                 <td>
                                     <a href="/product/edit/<%= p._id %>" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>

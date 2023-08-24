@@ -31,8 +31,12 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Product </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/product">List product</a></li>
-                                    <li><a class="dropdown-item" href="/product/create">Create product</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="/product">List product</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/product/create">Create product</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-item">
@@ -67,7 +71,22 @@
                                 <input type="number" name="price" value="<%= product.price %>" class="form-control" id="inputEmail3" />
                             </div>
                         </div>
-
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-control" name="category">
+                                <% category.forEach(c => { %>
+                                <option value="<%= c._id %>"><%= c.name %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Brand</label>
+                            <select class="form-control" name="brand">
+                                <% brand.forEach(c => { %>
+                                <option value="<%= c._id %>"><%= c.name %></option>
+                                <% }) %>
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
                             <div class="col-sm-10">

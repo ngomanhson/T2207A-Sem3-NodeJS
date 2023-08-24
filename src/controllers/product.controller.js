@@ -1,20 +1,25 @@
 const Product = require("./../models/product.model");
 const Category = require("./../models/category.model");
+const Brand = require("./../models/brand.model");
 const fs = require("fs"); //Filesystem
 
 exports.list = async (req, res) => {
     try {
-        const rs = await Product.find().populate("category").exec();
-        res.render("product/list", { products: rs });
+        const product = await Product.find().populate("category").populate("brand").exec();
+        res.render("product/list", {
+            product: product,
+        });
     } catch (error) {
         res.send(error);
     }
 };
 
-exports.formCreate = (req, res) => {
+exports.formCreate = async (req, res) => {
     const data = req.body;
+    const category = await Category.find();
+    const brand = await Brand.find();
     data.url = req._parsedOriginalUrl.path;
-    res.render("product/form", { product: data });
+    res.render("product/form", { product: data, category: category, brand: brand });
 };
 
 exports.store = async (req, res) => {
@@ -31,24 +36,23 @@ exports.store = async (req, res) => {
     }
 
     try {
-        // data.image = `uploads/${file.filename}`;
+        // data.image = uploads/${file.filename};
         const p = new Product(data);
         await p.save();
         res.redirect("/product");
     } catch (error) {
-        res.send("product/form", { product: data, error: error });
+        res.send("product/form", { products: data, error: error });
     }
 };
 
 exports.formEdit = async (req, res) => {
     const _id = req.params.id;
     try {
-        const product = await Product.findById(_id).populate("category").exec();
-        // product.url = req._parsedOriginalUrl.path;
-        product.image = "";
-
-        res.send(product);
-        res.render("product/form", { product: product });
+        const category = await Category.find();
+        const brand = await Brand.find();
+        const product = await Product.findById(_id).populate("category").populate("brand").exec();
+        product.url = req._parsedOriginalUrl.path;
+        res.render("product/form", { product: product, category: category, brand: brand });
     } catch (error) {
         res.redirect("/product");
     }
