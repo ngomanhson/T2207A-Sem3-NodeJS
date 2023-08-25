@@ -5,15 +5,6 @@ const controller = require("../controllers/user.controller");
 
 // ===== Middleware ===== //
 // All routes
-// router.use((req, res, next) => {
-//     const auth = req.session.auth;
-//     if (auth) {
-//         // Logged in
-//         return res.redirect("/");
-//     }
-//     next();
-// });
-
 router.use((req, res, next) => {
     const auth = req.session.auth;
     if (auth) {
