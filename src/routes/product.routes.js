@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/product.controller");
+const middleware = require("./../middlewares/role.middleware");
+router.use("/create", middleware.role_admin);
+router.use("/edit/:id", middleware.role_admin);
+router.use("/delete/:id", middleware.role_admin);
 
 // Upload file
 const multer = require("multer");

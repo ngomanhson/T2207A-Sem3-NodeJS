@@ -19,6 +19,12 @@ exports.postLogin = async (req, res) => {
             res.send("Email or Password is not correct");
             return;
         }
+
+        req.session.auth = {
+            fullname: u.fullname,
+            email: u.email,
+            role: u.role,
+        };
         res.send("Login success");
     } catch (err) {
         res.send(err);

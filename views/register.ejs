@@ -33,7 +33,7 @@
                     <div class="col">
                         <div class="form-inner2">
                             <h1 class="form-inner__heading pb-4">Sign up</h1>
-                            <form action="/auth/register" method="post">
+                            <form action="auth/register" method="post">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon1">
                                         <i class="fa-solid fa-user"></i>
@@ -61,6 +61,16 @@
                                     </span>
                                     <input type="password" name="password" class="form-control" placeholder="Confirm Password" />
                                 </div> -->
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa-solid fa-user"></i>
+                                    </span>
+                                    <select name="role" class="form-control cform-select">
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
 
                                 <div class="d-grid gap-2 col-6 mx-auto mt-4 mb-3">
                                     <button type="submit" class="btn btn-primary btn-submit">Create account</button>

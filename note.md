@@ -33,3 +33,7 @@
 ## install multer
 
 `npm i multer`
+
+## install express session
+
+`npm i  express-session`
