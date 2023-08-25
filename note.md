@@ -37,3 +37,7 @@
 ## install express session
 
 `npm i  express-session`
+
+## install mailer
+
+`npm i nodemailer`
