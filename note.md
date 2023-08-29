@@ -1,5 +1,9 @@
 ## install package
 
+`npm init`
+
+## install node modules
+
 `npm install`
 
 #### run
